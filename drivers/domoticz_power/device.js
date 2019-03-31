@@ -13,7 +13,7 @@ class DomoticzPowerDevice extends Homey.Device{
     updateState(result){
         
         let meterPower = parseFloat(result.CounterToday.split(" ")[0]);
-        let lastMeasurePower = parseFloat(result.Usage.split(" ")[0]);
+        let lastMeasurePower = parseFloat(result.Usage.split(" ")[0]) - parseFloat(result.UsageDeliv.split(" ")[0]);
      
         this.setCapabilityValue('measure_power',lastMeasurePower);
 		this.setCapabilityValue('meter_power',meterPower);
